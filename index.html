@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matheus Milfont - Engenheiro de Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Ícones do Font Awesome para WhatsApp e outros -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho com logo e navegação -->
+    <header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <!-- Logo como imagem -->
+                <img src="img/Logo.png" alt="Logo Matheus Milfont" class="logo-img">
+                <div class="logo-text">Matheus Milfont</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#experiencia">Experiência</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <!-- Seção Hero/Banner principal -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Engenheiro de Software</h2>
+                <p>Desenvolvendo soluções inovadoras para Web e Mobile</p>
+                <div class="contact-info">
+                    <div class="phone">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+55 (85) 9 9211-7625</span>
+                    </div>
+                    <div class="email">
+                        <i class="fas fa-envelope"></i>
+                        <span>matheusnmilfontc@gmail.com</span>
+                    </div>
+                </div>
+                <a href="#contato" class="btn-primary">Entre em Contato</a>
+            </div>
+        </div>
+    </section>
+
+     <!-- About Section -->
+    <section id="sobre" class="section">
+        <div class="container">
+            <h2 class="section-title">Quem sou eu?</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="content-box">
+                        <p>Olá, tudo bem? Meu nome é Matheus Milfont, um desenvolvedor de software apaixonado por criar soluções tecnológicas inovadoras.</p>
+                        <p>Sempre com novas ideias, implemento soluções aos mais diversos problemas, aplicando tecnologias amplamente usadas e com foco no sucesso no propósito dos projetos.</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="profile-img"><img src="img/FotoPerfil.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Formação Acadêmica -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Formação Acadêmica</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2020-2024</div>
+                    <div class="timeline-content">
+                        <h3>Graduação em Engenharia de Mecatrônica</h3>
+                        <p>8º Período, Instituto Federal do Ceará (IFCE)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024-2025</div>
+                    <div class="timeline-content">
+                        <h3>Graduação em Análise e Desenvolvimento de Sistemas</h3>
+                        <p>3º Período, Centro Universitário ETEP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Experiência Profissional -->
+    <section id="experiencia" class="section">
+        <div class="container">
+            <h2 class="section-title">Experiência Profissional</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - 2025</div>
+                    <div class="timeline-content">
+                        <h3>Polícia Militar do Ceará (PMCE)</h3>
+                        <h4>Desenvolvedor de Software Pleno</h4>
+                        <ul>
+                            <li>Criação de APIs em TypeScript (NestJS)</li>
+                            <li>Prototipagem de Sistemas (Figma)</li>
+                            <li>Modelagem de dados e gerenciamento de bancos de dados</li>
+                            <li>Desenvolvimento Front-end usando NextJS e Vite</li>
+                            <li>Desenvolvimento Full-Stack com PHP</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - 2024</div>
+                    <div class="timeline-content">
+                        <h3>Secretaria de Segurança Pública e Defesa Social</h3>
+                        <h4>Estagiário de Desenvolvimento de Software</h4>
+                        <ul>
+                            <li>Desenvolvimento de aplicativos mobile em Flutter</li>
+                            <li>Criação de APIs em Java (Spring)</li>
+                            <li>Montagem de designs de aplicativos</li>
+                            <li>Gerenciamento de bancos de dados</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <div class="timeline-content">
+                        <h3>Radix Engenharia e Software</h3>
+                        <h4>Estagiário de Análise de Dados</h4>
+                        <ul>
+                            <li>Análise de dados de sistemas de gerenciamento</li>
+                            <li>Montagem de dashboards de informações dos sistemas</li>
+                            <li>Gerenciamento de bancos de dados</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2023</div>
+                    <div class="timeline-content">
+                        <h3>Academia Estadual de Segurança Pública (AESP-CE)</h3>
+                        <h4>Estagiário de Desenvolvimento de Software</h4>
+                        <ul>
+                            <li>Desenvolvimento de aplicativos e sistemas web</li>
+                            <li>Linguagens como JavaScript e PHP</li>
+                            <li>Gerenciamento de bancos de dados</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Habilidades -->
+    <section id="habilidades" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Mobile</h3>
+                    <ul>
+                        <li>Flutter com gerenciamento de estados</li>
+                        <li>Requisições API REST</li>
+                        <li>Atomic State Pattern e Flutter Modular</li>
+                        <li>Kotlin e Java para Android</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Web</h3>
+                    <ul>
+                        <li>PHP com CodeIgniter e JQuery</li>
+                        <li>Java com Spring</li>
+                        <li>React usando Next e Vite</li>
+                        <li>APIs com NodeJS e NestJS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Outras</h3>
+                    <ul>
+                        <li>Especialidade em Design UX/UI</li>
+                        <li>Programação em sistemas embarcados</li>
+                        <li>Microcontroladores com comunicação em rede</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Idiomas -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Idiomas</h2>
+            <div class="languages">
+                <div class="language-item">
+                    <h3>Português</h3>
+                    <p>Fluente Nativo</p>
+                </div>
+                <div class="language-item">
+                    <h3>Inglês</h3>
+                    <p>Fluente - Certificado pelo Curso de Línguas Estrangeiras do Ceará em 1000 horas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Outras Experiências -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Outras Experiências</h2>
+            <div class="experiences-grid">
+                <div class="experience-item">
+                    <h3>Empresa Júnior de Tecnologia do IFCE - AUTOTECH</h3>
+                    <ul>
+                        <li>Gerente de Projetos</li>
+                        <li>Diretor de Projetos</li>
+                        <li>Presidente Executivo</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Federação Cearense de Empresas Juniores - FEJECE</h3>
+                    <ul>
+                        <li>Assessor de Gestão e Estratégia do Vice-presidente</li>
+                        <li>Assessor de Infraestrutura no Encontro Cearense de Empresas Juniores - ECEJ</li>
+                        <li>Coordenador de Infraestrutura do Impacte 23</li>
+                        <li>Coordenador de Infraestrutura do Prêmio FEJECE 23</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contato" class="section">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <p>+55 (85) 9 9211-7625</p>
+                            <a href="https://wa.me/5585992117625" class="btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Enviar Mensagem
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>E-mail</h3>
+                            <p>matheusnmilfontc@gmail.com</p>
+                            <a href="mailto:matheusnmilfontc@gmail.com" class="btn-email">
+                                <i class="fas fa-envelope"></i> Enviar E-mail
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <span class="logo-text">MM</span>
+                    </div>
+                    <p>Matheus Milfont - Engenheiro de Software</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#sobre">Sobre</a>
+                    <a href="#experiencia">Experiência</a>
+                    <a href="#habilidades">Habilidades</a>
+                    <a href="#contato">Contato</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Matheus Milfont. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
