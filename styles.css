@@ -126,18 +126,19 @@ nav a:hover::after {
     width: 80%;
 }
 
-/* Botão Mobile */
+/* ===== BOTÃO HAMBURGER NO CANTO DIREITO ===== */
 .mobile-menu-toggle {
     display: none;
     background: none;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     padding: 8px 12px;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 1001;
+    margin-left: auto; /* ⭐ Empurra para a direita */
 }
 
 .mobile-menu-toggle:hover {
@@ -910,9 +911,10 @@ footer {
 /* MOBILE LARGE (576px - 768px) */
 @media (max-width: 768px) {
     .page {
-        padding-top: 140px;
+        padding-top: 120px;
     }
     
+    /* ⭐⭐ HEADER MOBILE - BOTÃO NO CANTO DIREITO ⭐⭐ */
     .header-content {
         display: flex;
         justify-content: space-between;
@@ -923,11 +925,13 @@ footer {
     
     .mobile-menu-toggle {
         display: block;
-        order: 2;
+        margin-left: auto; /* ⭐ Empurra para a direita */
+        order: 2; /* ⭐ Garante que fique à direita */
     }
     
     .logo {
         order: 1;
+        flex: 1; /* ⭐ Ocupa o espaço disponível */
     }
     
     nav {
@@ -1078,7 +1082,7 @@ footer {
 /* MOBILE SMALL (até 576px) */
 @media (max-width: 576px) {
     .page {
-        padding-top: 120px;
+        padding-top: 100px;
     }
     
     .container {
@@ -1093,6 +1097,12 @@ footer {
     .logo-img {
         width: 40px;
         height: 40px;
+    }
+    
+    /* ⭐⭐ BOTÃO HAMBURGER MENOR NO MOBILE PEQUENO ⭐⭐ */
+    .mobile-menu-toggle {
+        font-size: 1.5rem;
+        padding: 6px 10px;
     }
     
     .about-section-art {
