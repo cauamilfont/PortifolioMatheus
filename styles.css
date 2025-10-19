@@ -8,6 +8,8 @@
     --white: #2d2d2d; /* Cinza escuro no lugar do branco */
     --dark-bg: #000000; /* Fundo preto */
     --card-bg: #1a1a1a; /* Fundo dos cards */
+    --code-font-size: 16px;
+    --code-opacity: 0.03;
 }
 
 * {
@@ -345,38 +347,6 @@ nav a:hover {
     }
 }
 
-/* Efeitos de partículas para transições */
-.transition-particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9998;
-}
-
-.particle {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    opacity: 0;
-    animation: particleFloat 1s ease-out forwards;
-}
-
-@keyframes particleFloat {
-    0% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(var(--particle-x, 100px), var(--particle-y, 100px)) scale(0);
-    }
-}
-
 /* Seção Sobre com Códigos Computacionais */
 .about-section-art {
     min-height: 100vh;
@@ -388,7 +358,7 @@ nav a:hover {
     overflow: hidden;
 }
 
-/* Códigos computacionais descendo - OPACIDADE AJUSTADA */
+/* Códigos computacionais descendo - OPACIDADE BEM REDUZIDA */
 .code-background {
     position: absolute;
     top: 0;
@@ -400,52 +370,54 @@ nav a:hover {
     z-index: 1;
 }
 
+/* Códigos computacionais descendo - QUASE INVISÍVEIS */
 .code-line {
     position: absolute;
     font-family: 'Courier New', monospace;
-    font-size: 16px;
+    font-size: var(--code-font-size, 16px);
     color: var(--primary-color);
     white-space: nowrap;
-    animation: codeFall linear infinite;
+    animation: codeFallInfinite linear infinite;
     font-weight: 500;
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+    text-shadow: 0 0 2px rgba(255, 215, 0, 0.02); /* Brilho quase zero */
+    pointer-events: none;
 }
 
-/* OPACIDADE REDUZIDA - mais sutil */
+/* OPACIDADE MÍNIMA - quase imperceptível */
 .code-line.slow {
     animation-duration: 25s;
     font-size: 14px;
-    opacity: 0.08;
+    opacity: 0.004; /* Quase invisível */
 }
 
 .code-line.medium {
     animation-duration: 20s;
     font-size: 16px;
-    opacity: 0.12;
+    opacity: 0.006; /* Quase invisível */
 }
 
 .code-line.fast {
     animation-duration: 15s;
     font-size: 18px;
-    opacity: 0.18;
+    opacity: 0.008; /* Quase invisível */
 }
 
 .code-line.very-fast {
     animation-duration: 10s;
     font-size: 14px;
-    opacity: 0.1;
-}
+    opacity: 0.003; /* Quase invisível */
+} 
 
-@keyframes codeFall {
+@keyframes codeFallInfinite {
     0% {
         transform: translateY(-100px);
         opacity: 0;
     }
     5% {
-        opacity: 0.4;
+        opacity: var(--current-opacity);
     }
     95% {
-        opacity: 0.4;
+        opacity: var(--current-opacity);
     }
     100% {
         transform: translateY(100vh);
@@ -994,6 +966,58 @@ footer {
     border-top: 1px solid rgba(255, 215, 0, 0.3);
 }
 
+/* Códigos Pulando durante as transições */
+.transition-codes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    overflow: hidden;
+}
+
+.jumping-code {
+    position: absolute;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--primary-color);
+    background: rgba(255, 215, 0, 0.05);
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--primary-color);
+    white-space: nowrap;
+    opacity: 0;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    box-shadow: 
+        0 0 15px rgba(255, 215, 0, 0.2),
+        inset 0 0 5px rgba(255, 215, 0, 0.05);
+    backdrop-filter: blur(5px);
+}
+
+/* Efeito de brilho nos códigos */
+.jumping-code::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, var(--primary-color), transparent);
+    border-radius: 8px;
+    opacity: 0;
+    animation: codeGlow 1.2s ease-out forwards;
+    z-index: -1;
+}
+
+@keyframes codeGlow {
+    0% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 0.2; transform: scale(1.1); }
+    100% { opacity: 0; transform: scale(0.8); }
+}
+
 /* Responsividade */
 @media (max-width: 1024px) {
     .about-container-art {
@@ -1086,6 +1110,37 @@ footer {
     .footer-links {
         justify-content: center;
     }
+    
+    /* Mobile: códigos ainda mais transparentes */
+    .code-line {
+        font-size: 12px;
+        animation-duration: 20s !important;
+    }
+    
+    .code-line.slow {
+        animation-duration: 18s;
+        opacity: 0.008;
+    }
+    
+    .code-line.medium {
+        animation-duration: 15s;
+        opacity: 0.012;
+    }
+    
+    .code-line.fast {
+        animation-duration: 12s;
+        opacity: 0.015;
+    }
+    
+    .code-line.very-fast {
+        animation-duration: 8s;
+        opacity: 0.005;
+    }
+    
+    .jumping-code {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1115,60 +1170,182 @@ footer {
         font-size: 0.9rem;
     }
 }
-/* Códigos Pulando durante as transições */
-.transition-codes {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9998;
-    overflow: hidden;
-}
-
-.jumping-code {
-    position: absolute;
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--primary-color);
-    background: rgba(255, 215, 0, 0.1);
-    padding: 6px 12px;
-    border-radius: 6px;
-    border: 1px solid var(--primary-color);
-    white-space: nowrap;
-    opacity: 0;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    box-shadow: 
-        0 0 20px rgba(255, 215, 0, 0.3),
-        inset 0 0 10px rgba(255, 215, 0, 0.1);
-    backdrop-filter: blur(5px);
-}
-
-/* Efeito de brilho nos códigos */
-.jumping-code::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, transparent, var(--primary-color), transparent);
-    border-radius: 8px;
-    opacity: 0;
-    animation: codeGlow 1.2s ease-out forwards;
-    z-index: -1;
-}
-
-@keyframes codeGlow {
-    0% { opacity: 0; transform: scale(0.8); }
-    50% { opacity: 0.4; transform: scale(1.1); }
-    100% { opacity: 0; transform: scale(0.8); }
-}
 
 /* Remova o CSS antigo das partículas se existir */
 .transition-particles,
 .particle {
     display: none;
 }
+/* ⭐ NOVO: Menu Mobile */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 101;
+}
+
+.mobile-menu-toggle:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Menu mobile ativo */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    /* Esconder menu normal no mobile */
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--accent-color);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        border-top: 1px solid var(--primary-color);
+        z-index: 100;
+    }
+    
+    /* Mostrar menu quando ativo */
+    nav.mobile-active ul {
+        display: flex;
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    nav ul li {
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+    
+    nav a {
+        display: block;
+        padding: 12px 15px;
+        border-radius: 5px;
+        text-align: center;
+        border: 1px solid transparent;
+    }
+    
+    nav a:hover {
+        border-color: var(--primary-color);
+        background: rgba(255, 215, 0, 0.1);
+    }
+    
+    /* Ajustar header para mobile */
+    .header-content {
+        position: relative;
+    }
+    
+    /* Ajustar padding das páginas para mobile */
+    .page {
+        padding-top: 140px !important;
+    }
+    
+    /* Ajustar imagem de perfil no mobile */
+    .profile-img-art {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    
+    /* Timeline mobile */
+    .timeline::before {
+        left: 20px !important;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+    }
+    
+    .timeline-date, .timeline-content {
+        width: calc(100% - 60px) !important;
+        margin-left: 60px !important;
+    }
+    
+    .timeline-date {
+        margin-bottom: 10px;
+        width: auto;
+    }
+    
+    /* Grid responsivo */
+    .skills-grid,
+    .experiences-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .languages {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* Animação para menu mobile */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+    .page {
+        padding-top: 120px !important;
+    }
+    
+    .about-title-art {
+        font-size: 2rem !important;
+    }
+    
+    .about-subtitle-art {
+        font-size: 1rem !important;
+    }
+    
+    .profile-img-art {
+        width: 180px !important;
+        height: 180px !important;
+    }
+    
+    .section-title {
+        font-size: 1.8rem !important;
+    }
+    
+    .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+}
+
+/* ⭐ IMPORTANTE: Remover regras conflitantes */
+/* Se você tiver estas regras no seu CSS atual, REMOVA ou SOBRESCREVA: */
+
+/*
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column; ← PODE CONFLITAR
+        gap: 15px; ← PODE CONFLITAR  
+    }
+    
+    nav ul {
+        gap: 1rem; ← PODE CONFLITAR
+    }
+}
+*/

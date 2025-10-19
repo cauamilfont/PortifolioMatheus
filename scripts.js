@@ -4,7 +4,6 @@ class FunPageManager {
         this.currentPage = 'sobre-page';
         this.isAnimating = false;
         this.animationPairs = {
-            // [fromPage_toPage]: [exitAnimation, enterAnimation]
             'sobre-page_experiencia-page': ['page-flip-exit', 'page-slide-bounce-enter'],
             'sobre-page_habilidades-page': ['page-flip-exit', 'page-zoom-rotate-enter'],
             'sobre-page_contato-page': ['page-flip-exit', 'page-falling-enter'],
@@ -28,6 +27,7 @@ class FunPageManager {
         this.setupNavigation();
         this.showPage(this.currentPage);
         this.setupScrollEffect();
+        this.setupMobileMenu(); // ⭐ NOVO: Menu mobile
     }
 
     setupNavigation() {
@@ -37,6 +37,8 @@ class FunPageManager {
                 const targetPage = link.getAttribute('data-page');
                 if (targetPage && targetPage !== this.currentPage && !this.isAnimating) {
                     this.navigateTo(targetPage);
+                    // ⭐ NOVO: Fechar menu mobile após clique
+                    this.closeMobileMenu();
                 }
             });
         });
@@ -48,6 +50,45 @@ class FunPageManager {
                 this.navigateTo(targetPage);
             }
         });
+    }
+
+    // ⭐ NOVO: Menu mobile
+    setupMobileMenu() {
+        // Criar botão hamburger para mobile
+        const headerContent = document.querySelector('.header-content');
+        const nav = document.querySelector('nav');
+        
+        if (window.innerWidth < 768) {
+            const hamburger = document.createElement('button');
+            hamburger.className = 'mobile-menu-toggle';
+            hamburger.innerHTML = '☰';
+            hamburger.setAttribute('aria-label', 'Abrir menu');
+            
+            hamburger.addEventListener('click', () => {
+                nav.classList.toggle('mobile-active');
+                hamburger.innerHTML = nav.classList.contains('mobile-active') ? '✕' : '☰';
+            });
+            
+            headerContent.appendChild(hamburger);
+            
+            // Fechar menu ao clicar fora
+            document.addEventListener('click', (e) => {
+                if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                    nav.classList.remove('mobile-active');
+                    hamburger.innerHTML = '☰';
+                }
+            });
+        }
+    }
+
+    // ⭐ NOVO: Fechar menu mobile
+    closeMobileMenu() {
+        const nav = document.querySelector('nav');
+        const hamburger = document.querySelector('.mobile-menu-toggle');
+        if (nav && hamburger) {
+            nav.classList.remove('mobile-active');
+            hamburger.innerHTML = '☰';
+        }
     }
 
     setupScrollEffect() {
@@ -211,10 +252,10 @@ class FunPageManager {
         
         for (let frame = 0; frame <= numFrames; frame++) {
             const progress = frame / numFrames;
-            const x = startX + (Math.random() - 0.5) * 40; // Movimento horizontal aleatório
-            const y = startY - Math.sin(progress * Math.PI) * 30; // Movimento de pulo
-            const scale = 0.5 + Math.sin(progress * Math.PI) * 0.5; // Escala que muda durante o pulo
-            const rotation = (Math.random() - 0.5) * 20; // Rotação leve
+            const x = startX + (Math.random() - 0.5) * 40;
+            const y = startY - Math.sin(progress * Math.PI) * 30;
+            const scale = 0.5 + Math.sin(progress * Math.PI) * 0.5;
+            const rotation = (Math.random() - 0.5) * 20;
             
             keyframes.push(`
                 ${frame * (100/numFrames)}% {
@@ -228,7 +269,6 @@ class FunPageManager {
     }
 
     playTransitionSound(fromPage, toPage) {
-        // Efeitos visuais no console
         const pages = {
             'sobre-page': '🚀 SOBRE',
             'experiencia-page': '💼 EXPERIÊNCIA', 
@@ -247,7 +287,7 @@ class FunPageManager {
     }
 }
 
-// CSS para códigos pulando (será adicionado dinamicamente)
+// CSS para códigos pulando
 const jumpingCodesStyles = `
 .transition-codes {
     position: fixed;
@@ -266,17 +306,16 @@ const jumpingCodesStyles = `
     font-size: 14px;
     font-weight: bold;
     color: var(--primary-color);
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(255, 215, 0, 0.05);
     padding: 4px 8px;
     border-radius: 4px;
     border: 1px solid var(--primary-color);
     white-space: nowrap;
     opacity: 0;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
 }
 
-/* Efeito de brilho nos códigos */
 .jumping-code::before {
     content: '';
     position: absolute;
@@ -293,7 +332,58 @@ const jumpingCodesStyles = `
 
 @keyframes codeGlow {
     0%, 100% { opacity: 0; }
-    50% { opacity: 0.3; }
+    50% { opacity: 0.2; }
+}
+
+/* ⭐ NOVO: Estilos para menu mobile */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--accent-color);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        border-top: 1px solid var(--primary-color);
+    }
+    
+    nav.mobile-active ul {
+        display: flex;
+    }
+    
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+    
+    nav a {
+        display: block;
+        padding: 10px 15px;
+        border-radius: 5px;
+    }
 }
 `;
 
@@ -302,13 +392,12 @@ const jumpingCodesStyleSheet = document.createElement('style');
 jumpingCodesStyleSheet.textContent = jumpingCodesStyles;
 document.head.appendChild(jumpingCodesStyleSheet);
 
-// Gerar códigos computacionais descendo (para a página sobre)
-function createCodeRain() {
+// Gerar códigos computacionais descendo INFINITAMENTE
+function createInfiniteCodeRain() {
     const codeBackground = document.getElementById('codeBackground');
     if (!codeBackground) return;
     
     const codeSnippets = [
-        // JavaScript/TypeScript
         'function developSolution() {',
         'const innovation = new Idea();',
         'return breakthrough;',
@@ -322,8 +411,6 @@ function createCodeRain() {
         '}',
         'const matheus = new Developer();',
         'matheus.buildFuture();',
-        
-        // React/Next.js
         'export default function Portfolio() {',
         'return <Innovation />;',
         '}',
@@ -333,71 +420,49 @@ function createCodeRain() {
         'useEffect(() => {',
         'fetchSolutions();',
         '}, []);',
-        
-        // Node.js/Backend
         'app.get("/api/success", (req, res) => {',
         'res.json({ status: "achieved" });',
         '});',
         'const server = http.createServer();',
         'server.listen(3000);',
-        
-        // Python
         'def solve_problem():',
         'return innovative_solution',
         'class Algorithm:',
         'def optimize(self):',
         'pass',
-        
-        // Flutter/Dart
         'class AmazingApp extends StatelessWidget {',
         '@override',
         'Widget build(BuildContext context) {',
         'return Innovation();',
         '}',
         '}',
-        
-        // Git Commands
         'git commit -m "feat: revolutionary feature"',
         'git push origin main',
         'npm run build',
         'docker-compose up',
-        
-        // Database
         'SELECT * FROM solutions;',
         'db.innovations.find({})',
         'CREATE TABLE projects (id SERIAL);',
-        
-        // DevOps
         'kubectl apply -f deployment.yaml',
         'terraform apply',
         'aws s3 sync ./build s3://portfolio',
-        
-        // PHP
         '<?php',
         'echo "Hello Innovation";',
         '?>',
         '$success = true;',
-        
-        // Java
         'public class Solution {',
         'public static void main() {',
         'System.out.println("Success");',
         '}',
         '}',
-        
-        // Go
         'package main',
         'func main() {',
         'fmt.Println("Building...")',
         '}',
-        
-        // Comandos Linux
         'ls -la',
         'cd ~/projects',
         'mkdir innovation',
         'chmod +x deploy.sh',
-        
-        // Comentários inspiradores
         '// Code with passion',
         '// Build the future',
         '// Innovation starts here',
@@ -408,8 +473,6 @@ function createCodeRain() {
         '// Scalable solutions',
         '// Cloud native apps',
         '// Mobile first approach',
-        
-        // Variáveis e funções
         'const techStack = ["React", "Node", "Flutter"];',
         'let creativity = unlimited;',
         'var solutions = [];',
@@ -421,22 +484,61 @@ function createCodeRain() {
         '}'
     ];
 
-    // Limpar códigos existentes
-    codeBackground.innerHTML = '';
-
-    // 60 códigos
-    for (let i = 0; i < 50; i++) {
-        const codeLine = document.createElement('div');
-        const randomSnippet = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
-        const speedClass = ['slow', 'medium', 'fast', 'very-fast'][Math.floor(Math.random() * 4)];
+    // Limpar códigos existentes apenas uma vez
+    if (codeBackground.children.length === 0) {
+        // Criar códigos iniciais - MENOS CÓDIGOS para mobile (performance)
+        const initialCodes = window.innerWidth < 768 ? 25 : 60;
         
-        codeLine.className = `code-line ${speedClass}`;
-        codeLine.textContent = randomSnippet;
-        codeLine.style.left = `${Math.random() * 100}%`;
-        codeLine.style.animationDelay = `${Math.random() * 8}s`;
-        
-        codeBackground.appendChild(codeLine);
+        for (let i = 0; i < initialCodes; i++) {
+            createSingleCodeLine(codeBackground, codeSnippets, i);
+        }
     }
+}
+
+// Criar uma única linha de código
+function createSingleCodeLine(container, snippets, index) {
+    const codeLine = document.createElement('div');
+    const randomSnippet = snippets[Math.floor(Math.random() * snippets.length)];
+    
+    // Ajustar velocidade baseada no dispositivo
+    const speeds = window.innerWidth < 768 ? 
+        ['slow', 'medium', 'fast'] : // Mobile: menos variações
+        ['slow', 'medium', 'fast', 'very-fast']; // Desktop: mais variações
+    
+    const speedClass = speeds[Math.floor(Math.random() * speeds.length)];
+    
+    codeLine.className = `code-line ${speedClass}`;
+    codeLine.textContent = randomSnippet;
+    codeLine.style.left = `${Math.random() * 100}%`;
+    codeLine.style.animationDelay = `${Math.random() * 15}s`;
+    
+    // Opacidade ajustada
+    codeLine.style.opacity = '0.08';
+    codeLine.style.color = 'rgba(255, 215, 0, 0.4)';
+    codeLine.style.textShadow = '0 0 3px rgba(255, 215, 0, 0.2)';
+    
+    // ⭐ NOVO: Tamanho de fonte responsivo
+    const fontSize = window.innerWidth < 768 ? '11px' : '16px';
+    codeLine.style.fontSize = fontSize;
+    
+    // Definir durações de animação diretamente
+    const durations = {
+        'slow': window.innerWidth < 768 ? '20s' : '25s', // Mais rápido no mobile
+        'medium': window.innerWidth < 768 ? '16s' : '20s', 
+        'fast': window.innerWidth < 768 ? '12s' : '15s',
+        'very-fast': window.innerWidth < 768 ? '8s' : '10s'
+    };
+    codeLine.style.animationDuration = durations[speedClass];
+    
+    // Quando a animação terminar, reiniciar com novo código
+    codeLine.addEventListener('animationiteration', () => {
+        const newSnippet = snippets[Math.floor(Math.random() * snippets.length)];
+        codeLine.textContent = newSnippet;
+        codeLine.style.left = `${Math.random() * 100}%`;
+        codeLine.style.opacity = '0.08';
+    });
+
+    container.appendChild(codeLine);
 }
 
 // Smooth scrolling para links internos
@@ -455,30 +557,48 @@ function setupSmoothScrolling() {
     });
 }
 
+// ⭐ NOVO: Otimizar layout para mobile
+function optimizeMobileLayout() {
+    if (window.innerWidth < 768) {
+        // Ajustar padding das páginas para mobile
+        document.querySelectorAll('.page').forEach(page => {
+            page.style.paddingTop = '140px'; // Mais espaço para header mobile
+        });
+        
+        // Ajustar tamanho da imagem de perfil no mobile
+        const profileImg = document.querySelector('.profile-img-art');
+        if (profileImg) {
+            profileImg.style.width = '200px';
+            profileImg.style.height = '200px';
+        }
+    } else {
+        // Reset para desktop
+        document.querySelectorAll('.page').forEach(page => {
+            page.style.paddingTop = '80px';
+        });
+        
+        const profileImg = document.querySelector('.profile-img-art');
+        if (profileImg) {
+            profileImg.style.width = '350px';
+            profileImg.style.height = '350px';
+        }
+    }
+}
+
 // Inicializar quando DOM carregar
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar sistema de páginas
     new FunPageManager();
     
-    // Inicializar códigos descendo
-    createCodeRain();
+    // Inicializar códigos descendo INFINITAMENTE
+    createInfiniteCodeRain();
     
     // Configurar scroll suave
     setupSmoothScrolling();
     
-    // Atualizar códigos periodicamente
-    setInterval(() => {
-        const codeBackground = document.getElementById('codeBackground');
-        if (codeBackground) {
-            const existingCodes = codeBackground.querySelectorAll('.code-line');
-            if (existingCodes.length > 40) {
-                for (let i = 0; i < 20; i++) {
-                    if (existingCodes[i]) {
-                        existingCodes[i].remove();
-                    }
-                }
-            }
-            createCodeRain();
-        }
-    }, 15000);
+    // ⭐ NOVO: Otimizar layout para mobile
+    optimizeMobileLayout();
+    
+    // ⭐ NOVO: Reotimizar quando redimensionar
+    window.addEventListener('resize', optimizeMobileLayout);
 });
