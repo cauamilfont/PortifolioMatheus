@@ -914,42 +914,46 @@ footer {
         padding-top: 120px;
     }
     
-    /* ⭐⭐ HEADER MOBILE - BOTÃO NO CANTO DIREITO ⭐⭐ */
+    /* ⭐⭐ HEADER MOBILE - CORREÇÃO ⭐⭐ */
     .header-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
         position: relative;
         min-height: 70px;
+        width: 100%;
     }
     
     .mobile-menu-toggle {
         display: block;
+        order: 2;
         margin-left: auto; /* ⭐ Empurra para a direita */
-        order: 2; /* ⭐ Garante que fique à direita */
     }
     
     .logo {
         order: 1;
-        flex: 1; /* ⭐ Ocupa o espaço disponível */
+        margin-right: auto; /* ⭐ Empurra para a esquerda */
     }
     
-    nav {
-        order: 3;
-        width: 100%;
-    }
-    
-    /* Menu desktop escondido no mobile */
-    nav ul {
+    /* ⭐⭐ ESCONDE menu desktop no mobile ⭐⭐ */
+    nav:not(.mobile-active) ul {
         display: none;
     }
     
-    /* Menu mobile ativo */
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+    
+    /* ⭐⭐ MOSTRA menu mobile quando ativo ⭐⭐ */
     nav.mobile-active ul {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 100%;
+        top: 0;
         left: 0;
         right: 0;
         background: var(--accent-color);
