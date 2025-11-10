@@ -6,19 +6,28 @@ class FunPageManager {
         this.animationPairs = {
             'sobre-page_experiencia-page': ['page-flip-exit', 'page-slide-bounce-enter'],
             'sobre-page_habilidades-page': ['page-flip-exit', 'page-zoom-rotate-enter'],
+            'sobre-page_projetos-page': ['page-flip-exit', 'page-falling-enter'],
             'sobre-page_contato-page': ['page-flip-exit', 'page-falling-enter'],
             
             'experiencia-page_sobre-page': ['page-slide-bounce-exit', 'page-wave-enter'],
             'experiencia-page_habilidades-page': ['page-slide-bounce-exit', 'page-zoom-rotate-enter'],
+            'experiencia-page_projetos-page': ['page-slide-bounce-exit', 'page-falling-enter'],
             'experiencia-page_contato-page': ['page-slide-bounce-exit', 'page-falling-enter'],
             
             'habilidades-page_sobre-page': ['page-zoom-rotate-exit', 'page-wave-enter'],
             'habilidades-page_experiencia-page': ['page-zoom-rotate-exit', 'page-slide-bounce-enter'],
+            'habilidades-page_projetos-page': ['page-zoom-rotate-exit', 'page-falling-enter'],
             'habilidades-page_contato-page': ['page-zoom-rotate-exit', 'page-falling-enter'],
+            
+            'projetos-page_sobre-page': ['page-falling-exit', 'page-wave-enter'],
+            'projetos-page_experiencia-page': ['page-falling-exit', 'page-slide-bounce-enter'],
+            'projetos-page_habilidades-page': ['page-falling-exit', 'page-zoom-rotate-enter'],
+            'projetos-page_contato-page': ['page-falling-exit', 'page-slide-bounce-enter'],
             
             'contato-page_sobre-page': ['page-falling-exit', 'page-wave-enter'],
             'contato-page_experiencia-page': ['page-falling-exit', 'page-slide-bounce-enter'],
-            'contato-page_habilidades-page': ['page-falling-exit', 'page-zoom-rotate-enter']
+            'contato-page_habilidades-page': ['page-falling-exit', 'page-zoom-rotate-enter'],
+            'contato-page_projetos-page': ['page-falling-exit', 'page-slide-bounce-enter']
         };
         this.init();
     }
@@ -27,7 +36,7 @@ class FunPageManager {
         this.setupNavigation();
         this.showPage(this.currentPage);
         this.setupScrollEffect();
-        this.setupMobileMenu(); // ⭐ NOVO: Menu mobile
+        this.setupMobileMenu();
     }
 
     setupNavigation() {
@@ -37,7 +46,6 @@ class FunPageManager {
                 const targetPage = link.getAttribute('data-page');
                 if (targetPage && targetPage !== this.currentPage && !this.isAnimating) {
                     this.navigateTo(targetPage);
-                    // ⭐ NOVO: Fechar menu mobile após clique
                     this.closeMobileMenu();
                 }
             });
@@ -52,9 +60,7 @@ class FunPageManager {
         });
     }
 
-    // ⭐ NOVO: Menu mobile
     setupMobileMenu() {
-        // Criar botão hamburger para mobile
         const headerContent = document.querySelector('.header-content');
         const nav = document.querySelector('nav');
         
@@ -71,7 +77,6 @@ class FunPageManager {
             
             headerContent.appendChild(hamburger);
             
-            // Fechar menu ao clicar fora
             document.addEventListener('click', (e) => {
                 if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
                     nav.classList.remove('mobile-active');
@@ -81,7 +86,6 @@ class FunPageManager {
         }
     }
 
-    // ⭐ NOVO: Fechar menu mobile
     closeMobileMenu() {
         const nav = document.querySelector('nav');
         const hamburger = document.querySelector('.mobile-menu-toggle');
@@ -108,30 +112,20 @@ class FunPageManager {
         this.isAnimating = true;
         const fromPage = this.currentPage;
         
-        // Criar códigos pulando
         this.createJumpingCodes();
-
-        // Mostrar loading divertido
         this.showFunLoading();
 
         await this.delay(400);
 
-        // Obter animações para esta transição
         const [exitAnim, enterAnim] = this.getAnimations(fromPage, pageId);
-
-        // Animação de saída
         this.hidePage(fromPage, exitAnim);
 
         await this.delay(600);
 
-        // Mostrar nova página
         this.showPage(pageId, enterAnim);
-
-        // Atualizar estado
         this.currentPage = pageId;
         window.history.pushState(null, null, `#${pageId.replace('-page', '')}`);
 
-        // Efeitos sonoros visuais
         this.playTransitionSound(fromPage, pageId);
 
         await this.delay(800);
@@ -154,7 +148,6 @@ class FunPageManager {
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            // Remover animação após execução
             setTimeout(() => {
                 page.classList.remove(animation);
             }, 1000);
@@ -203,24 +196,20 @@ class FunPageManager {
             '${ }', 'template', 'string', 'array', 'object', 'promise'
         ];
 
-        // Criar 15 códigos pulando
         for (let i = 0; i < 15; i++) {
             const codeElement = document.createElement('div');
             codeElement.className = 'jumping-code';
             
-            // Snippet aleatório
+            
             const randomSnippet = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
             codeElement.textContent = randomSnippet;
             
-            // Posição inicial aleatória
             const startX = Math.random() * 100;
             const startY = Math.random() * 100;
             
-            // Configurar animação única para cada código
             const animationName = `jumpCode${i}`;
             const keyframes = this.generateJumpKeyframes(startX, startY);
             
-            // Adicionar keyframes dinâmicos
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes ${animationName} {
@@ -229,7 +218,6 @@ class FunPageManager {
             `;
             document.head.appendChild(style);
             
-            // Aplicar animação
             codeElement.style.animation = `${animationName} 1.2s ease-out forwards`;
             codeElement.style.left = `${startX}%`;
             codeElement.style.top = `${startY}%`;
@@ -238,7 +226,6 @@ class FunPageManager {
             codesContainer.appendChild(codeElement);
         }
 
-        // Remover códigos após animação
         setTimeout(() => {
             if (codesContainer.parentNode) {
                 codesContainer.parentNode.removeChild(codesContainer);
@@ -273,6 +260,7 @@ class FunPageManager {
             'sobre-page': '🚀 SOBRE',
             'experiencia-page': '💼 EXPERIÊNCIA', 
             'habilidades-page': '⚡ HABILIDADES',
+            'projetos-page': '💻 PROJETOS',
             'contato-page': '📞 CONTATO'
         };
         
@@ -306,14 +294,14 @@ const jumpingCodesStyles = `
     font-size: 14px;
     font-weight: bold;
     color: var(--primary-color);
-    background: rgba(255, 215, 0, 0.05);
+    background: rgba(255, 215, 0, 0.1);
     padding: 4px 8px;
     border-radius: 4px;
     border: 1px solid var(--primary-color);
     white-space: nowrap;
     opacity: 0;
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .jumping-code::before {
@@ -332,58 +320,7 @@ const jumpingCodesStyles = `
 
 @keyframes codeGlow {
     0%, 100% { opacity: 0; }
-    50% { opacity: 0.2; }
-}
-
-/* ⭐ NOVO: Estilos para menu mobile */
-.mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.mobile-menu-toggle:hover {
-    background: var(--primary-color);
-    color: var(--secondary-color);
-}
-
-@media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: block;
-    }
-    
-    nav ul {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--accent-color);
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        border-top: 1px solid var(--primary-color);
-    }
-    
-    nav.mobile-active ul {
-        display: flex;
-    }
-    
-    nav ul li {
-        margin: 0.5rem 0;
-    }
-    
-    nav a {
-        display: block;
-        padding: 10px 15px;
-        border-radius: 5px;
-    }
+    50% { opacity: 0.3; }
 }
 `;
 
@@ -484,9 +421,7 @@ function createInfiniteCodeRain() {
         '}'
     ];
 
-    // Limpar códigos existentes apenas uma vez
     if (codeBackground.children.length === 0) {
-        // Criar códigos iniciais - MENOS CÓDIGOS para mobile (performance)
         const initialCodes = window.innerWidth < 768 ? 25 : 60;
         
         for (let i = 0; i < initialCodes; i++) {
@@ -495,15 +430,13 @@ function createInfiniteCodeRain() {
     }
 }
 
-// Criar uma única linha de código
 function createSingleCodeLine(container, snippets, index) {
     const codeLine = document.createElement('div');
     const randomSnippet = snippets[Math.floor(Math.random() * snippets.length)];
     
-    // Ajustar velocidade baseada no dispositivo
     const speeds = window.innerWidth < 768 ? 
-        ['slow', 'medium', 'fast'] : // Mobile: menos variações
-        ['slow', 'medium', 'fast', 'very-fast']; // Desktop: mais variações
+        ['slow', 'medium', 'fast'] : 
+        ['slow', 'medium', 'fast', 'very-fast'];
     
     const speedClass = speeds[Math.floor(Math.random() * speeds.length)];
     
@@ -512,33 +445,52 @@ function createSingleCodeLine(container, snippets, index) {
     codeLine.style.left = `${Math.random() * 100}%`;
     codeLine.style.animationDelay = `${Math.random() * 15}s`;
     
-    // Opacidade ajustada
-    codeLine.style.opacity = '0.08';
-    codeLine.style.color = 'rgba(255, 215, 0, 0.4)';
-    codeLine.style.textShadow = '0 0 3px rgba(255, 215, 0, 0.2)';
-    
-    // ⭐ NOVO: Tamanho de fonte responsivo
-    const fontSize = window.innerWidth < 768 ? '11px' : '16px';
-    codeLine.style.fontSize = fontSize;
-    
-    // Definir durações de animação diretamente
     const durations = {
-        'slow': window.innerWidth < 768 ? '20s' : '25s', // Mais rápido no mobile
+        'slow': window.innerWidth < 768 ? '20s' : '25s',
         'medium': window.innerWidth < 768 ? '16s' : '20s', 
         'fast': window.innerWidth < 768 ? '12s' : '15s',
         'very-fast': window.innerWidth < 768 ? '8s' : '10s'
     };
     codeLine.style.animationDuration = durations[speedClass];
     
-    // Quando a animação terminar, reiniciar com novo código
     codeLine.addEventListener('animationiteration', () => {
         const newSnippet = snippets[Math.floor(Math.random() * snippets.length)];
         codeLine.textContent = newSnippet;
         codeLine.style.left = `${Math.random() * 100}%`;
-        codeLine.style.opacity = '0.08';
     });
 
     container.appendChild(codeLine);
+}
+
+// Filtro de Projetos
+function initProjectsFilter() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const filter = btn.getAttribute('data-filter');
+            
+            projectCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
 }
 
 // Smooth scrolling para links internos
@@ -557,22 +509,19 @@ function setupSmoothScrolling() {
     });
 }
 
-// ⭐ NOVO: Otimizar layout para mobile
+// Otimizar layout para mobile
 function optimizeMobileLayout() {
     if (window.innerWidth < 768) {
-        // Ajustar padding das páginas para mobile
         document.querySelectorAll('.page').forEach(page => {
-            page.style.paddingTop = '140px'; // Mais espaço para header mobile
+            page.style.paddingTop = '140px';
         });
         
-        // Ajustar tamanho da imagem de perfil no mobile
         const profileImg = document.querySelector('.profile-img-art');
         if (profileImg) {
             profileImg.style.width = '200px';
             profileImg.style.height = '200px';
         }
     } else {
-        // Reset para desktop
         document.querySelectorAll('.page').forEach(page => {
             page.style.paddingTop = '80px';
         });
@@ -587,18 +536,227 @@ function optimizeMobileLayout() {
 
 // Inicializar quando DOM carregar
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar sistema de páginas
     new FunPageManager();
-    
-    // Inicializar códigos descendo INFINITAMENTE
     createInfiniteCodeRain();
-    
-    // Configurar scroll suave
     setupSmoothScrolling();
-    
-    // ⭐ NOVO: Otimizar layout para mobile
+    initProjectsFilter();
     optimizeMobileLayout();
     
-    // ⭐ NOVO: Reotimizar quando redimensionar
     window.addEventListener('resize', optimizeMobileLayout);
+});
+// Dados dos projetos atualizados
+const projectsData = {
+    1: {
+        title: "Sistema de Controle de Veículos - AESP/CE",
+        subtitle: "Sistema de gestão veicular para Academia Estadual de Segurança Pública",
+        image: "img/AESP2.png",
+        description: "Sistema desenvolvido para a Academia Estadual de Segurança Pública do Ceará com o objetivo de centralizar todas as informações referentes aos veículos da organização. Além da centralização de dados, o sistema possui funcionalidades avançadas de geração de relatórios para processos financeiros e de gestão do Estado do Ceará.",
+        features: [
+            "Centralização de informações veiculares",
+            "Geração de relatórios virtuais no sistema",
+            "Exportação de relatórios em PDF",
+            "Exportação de relatórios em Excel",
+            "Indexação direta nos processos financeiros",
+            "Gestão completa da frota veicular"
+        ],
+        technologies: ["PHP", "MySQL", "JavaScript", "Bootstrap", "PDF Generator", "Excel Export"],
+        
+    },
+    2: {
+        title: "Campeonato Cearense de Rally",
+        subtitle: "Readequação e modernização de site existente",
+        image: "img/Rally2.png",
+        description: "Projeto de readequação de um site já existente que necessitava de ajustes estruturais e atualizações visuais. Desenvolvemos uma nova arquitetura com foco na melhor experiência do usuário e posicionamento estratégico das informações mais relevantes. O site também recebeu um sistema de inscrições otimizado com um novo fluxo e facilitando o controle da diretoria.",
+        features: [
+        "Redesign completo da interface",
+        "Nova estrutura de navegação", 
+        "Otimização de performance",
+        "Layout responsivo",
+        "Melhor posicionamento de dados importantes",
+        "Atualização visual moderna",
+        "Sistema de inscrições otimizado",
+        "Novo fluxo de inscrições",
+        "Facilitação do controle pela diretoria"
+    ],
+    technologies: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL", "API Integration", "Responsive Design"],
+       
+    },
+    3: {
+        title: "Holanda Fôrmas",
+        subtitle: "Site institucional com foco em conversão",
+        image: "img/Holanda2.png",
+        description: "Site institucional desenvolvido para apresentar a marca e os serviços da empresa, facilitando o contato direto com clientes através de módulos de comunicação integrados. Projeto com forte foco em SEO para ampliar o alcance da marca no mercado.",
+        features: [
+            "Apresentação completa da marca",
+            "Módulo de comunicação direta com cliente",
+            "Otimização SEO avançada",
+            "Design conversor",
+            "Integração com redes sociais",
+            "Gestão de leads"
+        ],
+        technologies: ["WordPress", "SEO", "UX/UI Design", "Marketing Digital", "Contact Forms"],
+        
+    },
+    4: {
+        title: "Desor Rally Team",
+        subtitle: "Site + Portal para equipe de rally",
+        image: "img/desor2.png",
+        description: "Projeto completo envolvendo desenvolvimento de Site institucional e Portal administrativo. O Site tem como objetivo apresentar a equipe para potenciais patrocinadores, enquanto o Portal gerencia associados e conteúdo interno.",
+        features: [
+            "Site institucional para patrocinadores",
+            "Portal administrativo para associados",
+            "Seção de notícias atualizável",
+            "Carteirinha digital de associado",
+            "Galeria de fotos de competições",
+            "Módulo de contato com marketing"
+        ],
+        technologies: ["PHP", "MySQL", "JavaScript", "Portal Development", "Content Management"],
+       
+    },
+    5: {
+        title: "Sistema de Gestão Acadêmica - AESP/CE",
+        subtitle: "Sistema completo para gestão educacional",
+        image: "img/AESP3.png",
+        description: "Sistema desenvolvido para a Academia Estadual de Segurança Pública do Ceará com foco na gestão completa dos processos acadêmicos, desde administração de alunos até processos financeiros dos instrutores.",
+        features: [
+            "Administração de alunos e turmas",
+            "Gestão de instrutores e coordenadores",
+            "Processos financeiros dos instrutores",
+            "Relatórios de pagamento e financeiro",
+            "Cadastro de aulas e diários de classe",
+            "Controle completo de cursos"
+        ],
+        technologies: ["PHP", "MySQL", "Laravel", "Financial Management", "Academic System"],
+        
+    },
+    6: {
+        title: "NMC Consultoria",
+        subtitle: "Site institucional para consultoria imobiliária jurídica",
+        image: "img/NMC2.png",
+        description: "Site institucional desenvolvido para empresa do ramo imobiliário jurídico, com objetivo de apresentar a empresa de forma profissional e facilitar o contato com clientes potenciais.",
+        features: [
+            "Apresentação institucional da empresa",
+            "Catálogo de serviços jurídicos",
+            "Formulários de contato otimizados",
+            "Design profissional e confiável",
+            "Otimização para dispositivos móveis",
+            "Integração com redes sociais"
+        ],
+        technologies: ["HTML5", "CSS3", "JavaScript", "Corporate Website", "Legal Tech"],
+        
+    },
+    7: {
+        title: "Cyphertech Automation",
+        subtitle: "App Android para automação industrial única",
+        image: "img/Cyphertech2.png",
+        description: "Aplicativo Android único no mercado desenvolvido para comunicação com máquina microcontrolada em indústria de produtos de limpeza. Solução inovadora que controla o despejo de misturas químicas através de interface mobile.",
+        features: [
+            "Comunicação com microcontrolador",
+            "Controle de dosagem química",
+            "Interface intuitiva para operadores",
+            "Sistema único no mercado",
+            "Integração industrial",
+            "Controle de processos em tempo real"
+        ],
+        technologies: ["Java", "Android Studio", "PHP", "C#", "Microcontrollers", "IoT"],
+        
+    },
+    8: {
+        title: "Amigos CCDS",
+        subtitle: "App mobile para Conselhos Comunitários de Defesa Social",
+        image: "img/Amigos2.png",
+        description: "Aplicativo mobile desenvolvido para aproximar líderes dos Conselhos Comunitários de Defesa Social dos órgãos competentes de segurança pública. Plataforma completa com múltiplas funcionalidades para engajamento comunitário.",
+        features: [
+            "Portal de notícias do CCDS",
+            "Sistema de notificação de eventos",
+            "Documentos relacionados aos CCDS's",
+            "Respostas de formulários de avaliação",
+            "Acesso à identidade funcional digital",
+            "Comunicação direta com órgãos públicos"
+        ],
+        technologies: ["Flutter", "Dart", "Firebase", "Push Notifications", "Community App"],
+       
+    }
+};
+
+// Modal de detalhes do projeto
+function initProjectModal() {
+    const modal = document.getElementById('project-modal');
+    const modalBody = modal.querySelector('.modal-body');
+    const closeBtn = modal.querySelector('.modal-close');
+    const overlay = modal.querySelector('.modal-overlay');
+
+    // Abrir modal
+    document.querySelectorAll('.view-details').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const projectId = btn.getAttribute('data-project');
+            openProjectModal(projectId);
+        });
+    });
+
+    // Fechar modal
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
+
+    // Fechar com ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    function openProjectModal(projectId) {
+        const project = projectsData[projectId];
+        if (!project) return;
+
+        modalBody.innerHTML = `
+            <div class="modal-header">
+                <h2 class="modal-title">${project.title}</h2>
+                <p class="modal-subtitle">${project.subtitle}</p>
+            </div>
+            
+            <div class="modal-grid">
+                <div class="modal-image">
+                    <img src="${project.image}" alt="${project.title}">
+                </div>
+                
+                <div class="modal-info">
+                    <div class="modal-description">
+                        <p>${project.description}</p>
+                    </div>
+                    
+                    <div class="modal-features">
+                        <h3>Funcionalidades</h3>
+                        <ul>
+                            ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-tech">
+                        <h3>Tecnologias Utilizadas</h3>
+                        <div class="modal-tech-stack">
+                            ${project.technologies.map(tech => `<span class="tech-tag-large">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        `;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// E atualize a inicialização no DOMContentLoaded:
+document.addEventListener('DOMContentLoaded', function() {
+    // ... código existente ...
+    initProjectModal(); // ⭐ Adicione esta linha
 });
