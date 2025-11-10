@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    
     <!-- Loading divertido -->
     <div class="page-loading" id="pageLoading">
         <div class="loading-fun">
@@ -19,24 +20,24 @@
 
     <!-- Cabeçalho com logo e navegação -->
     <header>
-    <div class="container">
-        <div class="header-content">
-            <div class="logo">
-                <img src="img/Logo.png" alt="Logo Matheus Milfont" class="logo-img">
-                <div class="logo-text">Matheus Milfont</div>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="img/Logo.png" alt="Logo Matheus Milfont" class="logo-img">
+                    <div class="logo-text">Matheus Milfont</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#sobre" class="nav-link" data-page="sobre-page">Sobre</a></li>
+                        <li><a href="#experiencia" class="nav-link" data-page="experiencia-page">Experiência</a></li>
+                        <li><a href="#habilidades" class="nav-link" data-page="habilidades-page">Habilidades</a></li>
+                        <li><a href="#projetos" class="nav-link" data-page="projetos-page">Projetos</a></li>
+                        <li><a href="#contato" class="nav-link" data-page="contato-page">Contato</a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#sobre" class="nav-link" data-page="sobre-page">Sobre</a></li>
-                    <li><a href="#experiencia" class="nav-link" data-page="experiencia-page">Experiência</a></li>
-                    <li><a href="#habilidades" class="nav-link" data-page="habilidades-page">Habilidades</a></li>
-                    <li><a href="#contato" class="nav-link" data-page="contato-page">Contato</a></li>
-                </ul>
-            </nav>
-            <!-- O botão mobile será adicionado pelo JavaScript -->
         </div>
-    </div>
-</header>
+    </header>
 
     <!-- PÁGINA SOBRE -->
     <section id="sobre-page" class="page active">
@@ -228,6 +229,221 @@
         </div>
     </section>
 
+    <!-- PÁGINA PROJETOS -->
+    <section id="projetos-page" class="page">
+        <div class="section">
+            <div class="container">
+                <h2 class="section-title">Meus Projetos</h2>
+                <p class="section-subtitle">Confira alguns dos projetos que desenvolvi ao longo da minha carreira</p>
+                
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile</button>
+                    <button class="filter-btn" data-filter="sistema">Sistemas</button>
+                    <button class="filter-btn" data-filter="outros">Outros</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Projeto 1 - Sistema de Controle de Veículos -->
+                    <div class="project-card" data-category="sistema">
+                        <div class="project-image">
+                            <img src="img/AESP.png" alt="Sistema de Controle de Veículos">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <button class="project-link view-details" data-project="1" title="Ver Detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Sistema de Controle de Veículos - AESP/CE</h3>
+                            <p>Sistema desenvolvido para centralizar informações veiculares e gerar relatórios em PDF/Excel para processos financeiros do Estado do Ceará.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Bootstrap</span>
+                                <span class="tech-tag">PDF/Excel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 2 - Campeonato Cearense de Rally -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-image">
+                            <img src="img/Rally.png" alt="Campeonato Cearense de Rally">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <button class="project-link view-details" data-project="2" title="Ver Detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Campeonato Cearense de Rally</h3>
+                            <p>Readequação e atualização visual de site existente com nova estrutura e melhor posicionamento de dados importantes.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Responsivo</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 3 - Holanda Fôrmas -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-image">
+                            <img src="img/Holanda.png" alt="Holanda Fôrmas">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <button class="project-link view-details" data-project="3" title="Ver Detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Holanda Fôrmas</h3>
+                            <p>Site institucional com apresentação da marca, módulo de comunicação direta com cliente e otimização SEO para alcance máximo.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">UX/UI</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 4 - Desor Rally Team -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-image">
+                            <img src="img/Desor.png" alt="Desor Rally Team">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <button class="project-link view-details" data-project="4" title="Ver Detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Desor Rally Team</h3>
+                            <p>Site + Portal para apresentação da equipe a patrocinadores e gestão de associados com notícias, carteirinha digital e comunicação.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Portal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 5 - Sistema de Gestão Acadêmica -->
+                    <div class="project-card" data-category="sistema">
+                        <div class="project-image">
+                            <img src="img/AESP.png" alt="Sistema de Gestão Acadêmica">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <button class="project-link view-details" data-project="5" title="Ver Detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Sistema de Gestão Acadêmica - AESP/CE</h3>
+                            <p>Sistema completo para gestão de cursos, instrutores, processos financeiros e diários de classe da Academia de Segurança Pública.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">Gestão</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 6 - NMC Consultoria -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-image">
+                            <img src="img/NMC.png" alt="NMC Consultoria">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <button class="project-link view-details" data-project="6" title="Ver Detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>NMC Consultoria</h3>
+                            <p>Site institucional para empresa do ramo imobiliário jurídico, apresentando serviços e facilitando contato com clientes.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Institucional</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 7 - Cyphertech Automation -->
+                    <div class="project-card" data-category="mobile">
+                        <div class="project-image">
+                            <img src="img/Cyphertech.png" alt="Cyphertech Automation">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <button class="project-link view-details" data-project="7" title="Ver Detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Cyphertech Automation</h3>
+                            <p>App Android único para controle de máquina microcontrolada em indústria de produtos de limpeza, com comunicação via PHP e C#.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">Android</span>
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">IoT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 8 - Amigos CCDS -->
+                    <div class="project-card" data-category="mobile">
+                        <div class="project-image">
+                            <img src="img/Amigos.png" alt="Amigos CCDS">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <button class="project-link view-details" data-project="8" title="Ver Detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Amigos CCDS</h3>
+                            <p>App para aproximar líderes de Conselhos Comunitários de Defesa Social dos órgãos de segurança pública com notícias e identidade funcional.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Dart</span>
+                                <span class="tech-tag">Firebase</span>
+                                <span class="tech-tag">Mobile</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- PÁGINA CONTATO -->
     <section id="contato-page" class="page">
         <div class="section">
@@ -293,6 +509,7 @@
                     <a href="#sobre" class="nav-link" data-page="sobre-page">Sobre</a>
                     <a href="#experiencia" class="nav-link" data-page="experiencia-page">Experiência</a>
                     <a href="#habilidades" class="nav-link" data-page="habilidades-page">Habilidades</a>
+                    <a href="#projetos" class="nav-link" data-page="projetos-page">Projetos</a>
                     <a href="#contato" class="nav-link" data-page="contato-page">Contato</a>
                 </div>
             </div>
@@ -301,6 +518,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- MODAL DE DETALHES DO PROJETO -->
+    <div id="project-modal" class="project-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+        </div>
+    </div>
 
     <script src="scripts.js"></script>
 </body>
