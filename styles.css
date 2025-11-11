@@ -1,13 +1,13 @@
-/* Reset e variáveis de cores */
+
 :root {
-    --primary-color: #FFD700; /* Amarelo */
-    --secondary-color: #000000; /* Preto */
-    --accent-color: #1a1a1a; /* Preto menos intenso para cards */
-    --light-color: #2d2d2d; /* Cinza escuro */
-    --text-color: #ffffff; /* Texto branco */
-    --white: #2d2d2d; /* Cinza escuro no lugar do branco */
-    --dark-bg: #000000; /* Fundo preto */
-    --card-bg: #1a1a1a; /* Fundo dos cards */
+    --primary-color: #FFD700; 
+    --secondary-color: #000000; 
+    --accent-color: #1a1a1a; 
+    --light-color: #2d2d2d; 
+    --text-color: #ffffff; 
+    --white: #2d2d2d; 
+    --dark-bg: #000000; 
+    --card-bg: #1a1a1a; 
     --code-opacity: 0.08;
 }
 
@@ -32,7 +32,7 @@ body {
     padding: 0 15px;
 }
 
-/* ===== HEADER RESPONSIVO ===== */
+
 header {
     background-color: var(--accent-color);
     color: var(--primary-color);
@@ -86,7 +86,7 @@ header.scrolled {
     color: var(--primary-color);
 }
 
-/* Navegação Desktop */
+
 nav ul {
     display: flex;
     list-style: none;
@@ -126,7 +126,7 @@ nav a:hover::after {
     width: 80%;
 }
 
-/* ===== BOTÃO HAMBURGER NO CANTO DIREITO ===== */
+
 .mobile-menu-toggle {
     display: none;
     background: none;
@@ -147,7 +147,7 @@ nav a:hover::after {
     transform: scale(1.05);
 }
 
-/* ===== SISTEMA DE PÁGINAS ===== */
+
 .page {
     min-height: 100vh;
     display: none;
@@ -159,7 +159,7 @@ nav a:hover::after {
     display: block;
 }
 
-/* ===== SEÇÃO SOBRE ===== */
+
 .about-section-art {
     min-height: 100vh;
     background-color: var(--dark-bg);
@@ -287,7 +287,7 @@ nav a:hover::after {
     box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
 }
 
-/* ===== SEÇÕES GERAIS ===== */
+
 .section {
     padding: 100px 0;
 }
@@ -325,7 +325,7 @@ nav a:hover::after {
     background-color: var(--light-color);
 }
 
-/* ===== TIMELINE ===== */
+
 .timeline {
     position: relative;
     max-width: 1000px;
@@ -362,11 +362,11 @@ nav a:hover::after {
 }
 
 .timeline-date {
-    display: none; /* DATAS REMOVIDAS EM DESKTOP */
+    display: none; 
 }
 
 .timeline-content {
-    width: 100%; /* OCUPA TODA A LARGURA */
+    width: 100%; 
     padding: 30px;
     background-color: var(--card-bg);
     border-radius: 12px;
@@ -412,7 +412,7 @@ nav a:hover::after {
     }
 }
 
-/* ===== GRID DE HABILIDADES ===== */
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -466,7 +466,7 @@ nav a:hover::after {
     font-weight: bold;
 }
 
-/* ===== IDIOMAS ===== */
+
 .languages {
     display: flex;
     justify-content: center;
@@ -505,7 +505,7 @@ nav a:hover::after {
     line-height: 1.5;
 }
 
-/* ===== OUTRAS EXPERIÊNCIAS ===== */
+
 .experiences-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -556,7 +556,7 @@ nav a:hover::after {
     font-weight: bold;
 }
 
-/* ===== SEÇÃO PROJETOS ===== */
+
 .projects-filter {
     display: flex;
     justify-content: center;
@@ -701,7 +701,7 @@ nav a:hover::after {
     border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
-/* ===== CONTATO ===== */
+
 .contact-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -785,11 +785,11 @@ nav a:hover::after {
     line-height: 1.5;
 }
 
-/* ===== CONTATO - BOTÕES CORRIGIDOS ===== */
+
 .btn-whatsapp, .btn-email, .btn-linkedin {
     display: inline-flex;
     align-items: center;
-    justify-content: center; /* ADICIONADO */
+    justify-content: center; 
     gap: 12px;
     padding: 14px 30px;
     border-radius: 10px;
@@ -798,8 +798,8 @@ nav a:hover::after {
     transition: all 0.3s ease;
     border: 2px solid transparent;
     font-size: 1.1rem;
-    vertical-align: middle; /* ADICIONADO */
-    line-height: 1; /* ADICIONADO */
+    vertical-align: middle; 
+    line-height: 1; 
 }
 
 .btn-whatsapp {
@@ -838,18 +838,18 @@ nav a:hover::after {
     transform: translateY(-2px);
 }
 
-/* Garantir que os ícones fiquem alinhados */
+
 .btn-whatsapp i,
 .btn-email i,
 .btn-linkedin i {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30px; /* Altura fixa para consistência */
-    font-size: 1 rem; /* Tamanho consistente */
+    height: 30px; 
+    font-size: 1 rem; 
 }
 
-/* Elementos decorativos na seção de contato */
+
 .contact-decoration {
     position: absolute;
     pointer-events: none;
@@ -885,7 +885,7 @@ nav a:hover::after {
     50% { transform: translateY(-15px) scale(1.05); }
 }
 
-/* ===== RODAPÉ ===== */
+
 footer {
     background-color: var(--accent-color);
     color: var(--primary-color);
@@ -931,7 +931,7 @@ footer {
     opacity: 0.8;
 }
 
-/* ===== CÓDIGOS CAINDO ===== */
+
 .code-background {
     position: absolute;
     top: 0;
@@ -997,7 +997,7 @@ footer {
     }
 }
 
-/* Códigos pulando durante transições */
+
 .transition-codes {
     position: fixed;
     top: 0;
@@ -1046,9 +1046,9 @@ footer {
     100% { opacity: 0; }
 }
 
-/* ===== RESPONSIVIDADE ===== */
 
-/* TABLET (768px - 1024px) */
+
+
 @media (max-width: 1024px) {
     .container {
         width: 95%;
@@ -1102,13 +1102,13 @@ footer {
     }
 }
 
-/* MOBILE LARGE (576px - 768px) */
+
 @media (max-width: 768px) {
     .page {
         padding-top: 120px;
     }
     
-    /* HEADER MOBILE */
+    
     .header-content {
         display: flex;
         justify-content: space-between;
@@ -1179,7 +1179,7 @@ footer {
         transform: translateY(-2px);
     }
     
-    /* SOBRE - Foto por cima do texto */
+    
     .about-section-art {
         padding: 100px 0 60px;
     }
@@ -1222,7 +1222,7 @@ footer {
         margin-bottom: 3rem;
     }
     
-    /* TIMELINE - Sem datas e mais quadrada */
+   
     .timeline::before {
         display: none;
     }
@@ -1281,7 +1281,7 @@ footer {
         justify-content: center;
     }
     
-    /* Códigos no mobile */
+   
     .code-line {
         font-size: 12px;
     }
@@ -1312,7 +1312,7 @@ footer {
     }
 }
 
-/* MOBILE SMALL (até 576px) */
+
 @media (max-width: 576px) {
     .page {
         padding-top: 100px;
@@ -1411,7 +1411,7 @@ footer {
     }
 }
 
-/* ANIMAÇÃO MENU MOBILE */
+
 @keyframes slideDown {
     from {
         opacity: 0;
@@ -1423,7 +1423,7 @@ footer {
     }
 }
 
-/* LOADING */
+
 .page-loading {
     position: fixed;
     top: 0;
@@ -1471,7 +1471,7 @@ footer {
     to { transform: translateY(-20px); }
 }
 
-/* ===== MODAL DE DETALHES DO PROJETO ===== */
+
 .project-modal {
     position: fixed;
     top: 0;
@@ -1656,7 +1656,7 @@ footer {
     transform: translateY(-2px);
 }
 
-/* Responsividade da Modal */
+
 @media (max-width: 768px) {
     .modal-content {
         margin: 20px;
@@ -1691,7 +1691,7 @@ footer {
     }
 }
 
-/* Ajuste nos botões dos projetos */
+
 .project-link {
     width: 60px;
     height: 60px;
@@ -1714,7 +1714,7 @@ footer {
     transform: scale(1.1);
 }
 
-/* === CÓDIGOS MAIS TRANSPARENTES - OVERRIDE === */
+
 .code-line {
     opacity: 0.30 !important;
     text-shadow: 0 0 2px rgba(255, 215, 0, 0.1) !important;
@@ -1733,23 +1733,23 @@ footer {
     box-shadow: 0 0 8px rgba(255, 215, 0, 0.08) !important;
 }
 
-/* Mobile */
+
 @media (max-width: 768px) {
     .code-line { opacity: 0.06 !important; }
     .code-line.slow { opacity: 0.02 !important; }
     .code-line.medium { opacity: 0.04 !important; }
     .code-line.fast { opacity: 0.05 !important; }
     .code-line.very-fast { opacity: 0.01 !important; }
-}/* Reset e variáveis de cores */
+}
 :root {
-    --primary-color: #FFD700; /* Amarelo */
-    --secondary-color: #000000; /* Preto */
-    --accent-color: #1a1a1a; /* Preto menos intenso para cards */
-    --light-color: #2d2d2d; /* Cinza escuro */
-    --text-color: #ffffff; /* Texto branco */
-    --white: #2d2d2d; /* Cinza escuro no lugar do branco */
-    --dark-bg: #000000; /* Fundo preto */
-    --card-bg: #1a1a1a; /* Fundo dos cards */
+    --primary-color: #FFD700; 
+    --secondary-color: #000000; 
+    --accent-color: #1a1a1a; 
+    --light-color: #2d2d2d; 
+    --text-color: #ffffff; 
+    --white: #2d2d2d; 
+    --dark-bg: #000000; 
+    --card-bg: #1a1a1a; 
     --code-opacity: 0.08;
 }
 
@@ -1774,7 +1774,7 @@ body {
     padding: 0 15px;
 }
 
-/* ===== HEADER RESPONSIVO ===== */
+
 header {
     background-color: var(--accent-color);
     color: var(--primary-color);
@@ -1828,7 +1828,7 @@ header.scrolled {
     color: var(--primary-color);
 }
 
-/* Navegação Desktop */
+
 nav ul {
     display: flex;
     list-style: none;
@@ -1868,7 +1868,7 @@ nav a:hover::after {
     width: 80%;
 }
 
-/* ===== BOTÃO HAMBURGER NO CANTO DIREITO ===== */
+
 .mobile-menu-toggle {
     display: none;
     background: none;
@@ -1889,7 +1889,7 @@ nav a:hover::after {
     transform: scale(1.05);
 }
 
-/* ===== SISTEMA DE PÁGINAS ===== */
+
 .page {
     min-height: 100vh;
     display: none;
@@ -1901,7 +1901,7 @@ nav a:hover::after {
     display: block;
 }
 
-/* ===== SEÇÃO SOBRE ===== */
+
 .about-section-art {
     min-height: 100vh;
     background-color: var(--dark-bg);
@@ -2029,7 +2029,7 @@ nav a:hover::after {
     box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
 }
 
-/* ===== SEÇÕES GERAIS ===== */
+
 .section {
     padding: 100px 0;
 }
@@ -2067,7 +2067,7 @@ nav a:hover::after {
     background-color: #0e0d0d;
 }
 
-/* ===== TIMELINE ===== */
+
 .timeline {
     position: relative;
     max-width: 1000px;
@@ -2104,11 +2104,11 @@ nav a:hover::after {
 }
 
 .timeline-date {
-    display: none; /* DATAS REMOVIDAS EM DESKTOP */
+    display: none; 
 }
 
 .timeline-content {
-    width: 100%; /* OCUPA TODA A LARGURA */
+    width: 100%; 
     padding: 30px;
     background-color: var(--card-bg);
     border-radius: 12px;
@@ -2154,7 +2154,7 @@ nav a:hover::after {
     }
 }
 
-/* ===== GRID DE HABILIDADES ===== */
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -2208,7 +2208,7 @@ nav a:hover::after {
     font-weight: bold;
 }
 
-/* ===== IDIOMAS ===== */
+
 .languages {
     display: flex;
     justify-content: center;
@@ -2247,7 +2247,7 @@ nav a:hover::after {
     line-height: 1.5;
 }
 
-/* ===== OUTRAS EXPERIÊNCIAS ===== */
+
 .experiences-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -2298,7 +2298,7 @@ nav a:hover::after {
     font-weight: bold;
 }
 
-/* ===== SEÇÃO PROJETOS ===== */
+
 .projects-filter {
     display: flex;
     justify-content: center;
@@ -2443,7 +2443,7 @@ nav a:hover::after {
     border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
-/* ===== CONTATO ===== */
+
 .contact-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -2527,7 +2527,7 @@ nav a:hover::after {
     line-height: 1.5;
 }
 
-/* Botões de Contato */
+
 .btn-whatsapp, .btn-email, .btn-linkedin {
     display: inline-flex;
     align-items: center;
@@ -2577,7 +2577,7 @@ nav a:hover::after {
     transform: translateY(-2px);
 }
 
-/* Elementos decorativos na seção de contato */
+
 .contact-decoration {
     position: absolute;
     pointer-events: none;
@@ -2613,7 +2613,7 @@ nav a:hover::after {
     50% { transform: translateY(-15px) scale(1.05); }
 }
 
-/* ===== RODAPÉ ===== */
+
 footer {
     background-color: var(--accent-color);
     color: var(--primary-color);
@@ -2659,7 +2659,7 @@ footer {
     opacity: 0.8;
 }
 
-/* ===== CÓDIGOS CAINDO ===== */
+
 .code-background {
     position: absolute;
     top: 0;
@@ -2725,7 +2725,7 @@ footer {
     }
 }
 
-/* Códigos pulando durante transições */
+
 .transition-codes {
     position: fixed;
     top: 0;
@@ -2774,9 +2774,7 @@ footer {
     100% { opacity: 0; }
 }
 
-/* ===== RESPONSIVIDADE ===== */
 
-/* TABLET (768px - 1024px) */
 @media (max-width: 1024px) {
     .container {
         width: 95%;
@@ -2830,13 +2828,13 @@ footer {
     }
 }
 
-/* MOBILE LARGE (576px - 768px) */
+
 @media (max-width: 768px) {
     .page {
         padding-top: 120px;
     }
     
-    /* HEADER MOBILE */
+    
     .header-content {
         display: flex;
         justify-content: space-between;
@@ -2907,7 +2905,7 @@ footer {
         transform: translateY(-2px);
     }
     
-    /* SOBRE - Foto por cima do texto */
+    
     .about-section-art {
         padding: 100px 0 60px;
     }
@@ -2950,7 +2948,7 @@ footer {
         margin-bottom: 3rem;
     }
     
-    /* TIMELINE - Sem datas e mais quadrada */
+    
     .timeline::before {
         display: none;
     }
@@ -3009,7 +3007,7 @@ footer {
         justify-content: center;
     }
     
-    /* Códigos no mobile */
+    
     .code-line {
         font-size: 12px;
     }
@@ -3040,7 +3038,7 @@ footer {
     }
 }
 
-/* MOBILE SMALL (até 576px) */
+
 @media (max-width: 576px) {
     .page {
         padding-top: 100px;
@@ -3139,7 +3137,7 @@ footer {
     }
 }
 
-/* ANIMAÇÃO MENU MOBILE */
+
 @keyframes slideDown {
     from {
         opacity: 0;
@@ -3151,7 +3149,7 @@ footer {
     }
 }
 
-/* LOADING */
+
 .page-loading {
     position: fixed;
     top: 0;
@@ -3199,7 +3197,7 @@ footer {
     to { transform: translateY(-20px); }
 }
 
-/* ===== MODAL DE DETALHES DO PROJETO ===== */
+
 .project-modal {
     position: fixed;
     top: 0;
@@ -3384,7 +3382,7 @@ footer {
     transform: translateY(-2px);
 }
 
-/* Responsividade da Modal */
+
 @media (max-width: 768px) {
     .modal-content {
         margin: 20px;
@@ -3419,7 +3417,7 @@ footer {
     }
 }
 
-/* Ajuste nos botões dos projetos */
+
 .project-link {
     width: 60px;
     height: 60px;
@@ -3442,7 +3440,7 @@ footer {
     transform: scale(1.1);
 }
 
-/* === CÓDIGOS MAIS TRANSPARENTES - OVERRIDE === */
+
 .code-line {
     opacity: 0.30 !important;
     text-shadow: 0 0 2px rgba(255, 215, 0, 0.1) !important;
@@ -3461,7 +3459,7 @@ footer {
     box-shadow: 0 0 8px rgba(255, 215, 0, 0.08) !important;
 }
 
-/* Mobile */
+
 @media (max-width: 768px) {
     .code-line { opacity: 0.06 !important; }
     .code-line.slow { opacity: 0.02 !important; }
