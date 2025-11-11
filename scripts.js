@@ -546,24 +546,41 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 // Dados dos projetos atualizados
 const projectsData = {
-    1: {
-        title: "Sistema de Controle de Veículos - AESP/CE",
-        subtitle: "Sistema de gestão veicular para Academia Estadual de Segurança Pública",
-        image: "img/AESP2.png",
-        description: "Sistema desenvolvido para a Academia Estadual de Segurança Pública do Ceará com o objetivo de centralizar todas as informações referentes aos veículos da organização. Além da centralização de dados, o sistema possui funcionalidades avançadas de geração de relatórios para processos financeiros e de gestão do Estado do Ceará.",
-        features: [
-            "Centralização de informações veiculares",
-            "Geração de relatórios virtuais no sistema",
-            "Exportação de relatórios em PDF",
-            "Exportação de relatórios em Excel",
-            "Indexação direta nos processos financeiros",
-            "Gestão completa da frota veicular"
-        ],
-        technologies: ["PHP", "MySQL", "JavaScript", "Bootstrap", "PDF Generator", "Excel Export"],
-        
-    },
+     1: {
+    title: "SGS Saúde - Sistema de Gestão de Saúde",
+    subtitle: "Sistema de gestão para diretoria de saúde da Polícia Militar do Ceará",
+    image: "img/SGS.png",
+    description: "O sistema de gestão de saúde da polícia militar do Ceará foi desenvolvido com o objetivo de facilitar o gerenciamento de horários e do atendimento dentro das operações da diretoria de saúde, trazendo otimização no trabalho dos profissionais da saúde dentro da PMCE e facilidade de atendimento para os policiais militares do estado.",
+    features: [
+        "Gestão completa de agendamentos e horários",
+        "Otimização do trabalho dos profissionais de saúde",
+        "Facilidade no atendimento aos policiais militares",
+        "Controle de operações da diretoria de saúde",
+        "Sistema integrado de gestão médica",
+        "Relatórios de atendimento e produtividade"
+    ],
+    technologies: ["Node.js", "React", "Nest"],
+},
+   
     2: {
-        title: "Campeonato Cearense de Rally",
+        title: "Amigos CCDS",
+        subtitle: "App mobile para Conselhos Comunitários de Defesa Social",
+        image: "img/Amigos2.png",
+        description: "Aplicativo mobile desenvolvido para aproximar líderes dos Conselhos Comunitários de Defesa Social dos órgãos competentes de segurança pública. Plataforma completa com múltiplas funcionalidades para engajamento comunitário.",
+        features: [
+            "Portal de notícias do CCDS",
+            "Sistema de notificação de eventos",
+            "Documentos relacionados aos CCDS's",
+            "Respostas de formulários de avaliação",
+            "Acesso à identidade funcional digital",
+            "Comunicação direta com órgãos públicos"
+        ],
+        technologies: ["Flutter", "Java", "SpringBoot",],
+       
+       
+    },
+   3: {
+    title: "Campeonato Cearense de Rally",
         subtitle: "Readequação e modernização de site existente",
         image: "img/Rally2.png",
         description: "Projeto de readequação de um site já existente que necessitava de ajustes estruturais e atualizações visuais. Desenvolvemos uma nova arquitetura com foco na melhor experiência do usuário e posicionamento estratégico das informações mais relevantes. O site também recebeu um sistema de inscrições otimizado com um novo fluxo e facilitando o controle da diretoria.",
@@ -578,27 +595,29 @@ const projectsData = {
         "Novo fluxo de inscrições",
         "Facilitação do controle pela diretoria"
     ],
-    technologies: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL", "API Integration", "Responsive Design"],
-       
-    },
-    3: {
-        title: "Holanda Fôrmas",
-        subtitle: "Site institucional com foco em conversão",
-        image: "img/Holanda2.png",
-        description: "Site institucional desenvolvido para apresentar a marca e os serviços da empresa, facilitando o contato direto com clientes através de módulos de comunicação integrados. Projeto com forte foco em SEO para ampliar o alcance da marca no mercado.",
-        features: [
-            "Apresentação completa da marca",
-            "Módulo de comunicação direta com cliente",
-            "Otimização SEO avançada",
-            "Design conversor",
-            "Integração com redes sociais",
-            "Gestão de leads"
-        ],
-        technologies: ["WordPress", "SEO", "UX/UI Design", "Marketing Digital", "Contact Forms"],
+    technologies: [ "PHP", "Codeigniter", "Jquery"],
+        
         
     },
     4: {
-        title: "Desor Rally Team",
+        title: "Sistema de Controle de Veículos - AESP/CE",
+        subtitle: "Sistema de gestão veicular para Academia Estadual de Segurança Pública",
+        image: "img/AESP2.png",
+        description: "Sistema desenvolvido para a Academia Estadual de Segurança Pública do Ceará com o objetivo de centralizar todas as informações referentes aos veículos da organização. Além da centralização de dados, o sistema possui funcionalidades avançadas de geração de relatórios para processos financeiros e de gestão do Estado do Ceará.",
+        features: [
+            "Centralização de informações veiculares",
+            "Geração de relatórios virtuais no sistema",
+            "Exportação de relatórios em PDF",
+            "Exportação de relatórios em Excel",
+            "Indexação direta nos processos financeiros",
+            "Gestão completa da frota veicular"
+        ],
+        technologies: ["PHP", "Codeigniter", "Jquery"],
+     
+       
+    },
+    5: {
+         title: "Desor Rally Team",
         subtitle: "Site + Portal para equipe de rally",
         image: "img/desor2.png",
         description: "Projeto completo envolvendo desenvolvimento de Site institucional e Portal administrativo. O Site tem como objetivo apresentar a equipe para potenciais patrocinadores, enquanto o Portal gerencia associados e conteúdo interno.",
@@ -610,11 +629,12 @@ const projectsData = {
             "Galeria de fotos de competições",
             "Módulo de contato com marketing"
         ],
-        technologies: ["PHP", "MySQL", "JavaScript", "Portal Development", "Content Management"],
+        technologies: ["PHP", "Codeigniter", "Bootstrap"],
        
+        
     },
-    5: {
-        title: "Sistema de Gestão Acadêmica - AESP/CE",
+    6: {
+         title: "Sistema de Gestão Acadêmica - AESP/CE",
         subtitle: "Sistema completo para gestão educacional",
         image: "img/AESP3.png",
         description: "Sistema desenvolvido para a Academia Estadual de Segurança Pública do Ceará com foco na gestão completa dos processos acadêmicos, desde administração de alunos até processos financeiros dos instrutores.",
@@ -626,11 +646,12 @@ const projectsData = {
             "Cadastro de aulas e diários de classe",
             "Controle completo de cursos"
         ],
-        technologies: ["PHP", "MySQL", "Laravel", "Financial Management", "Academic System"],
+        technologies: ["PHP", "Codeigniter", "Bootstrap"],
+        
         
     },
-    6: {
-        title: "NMC Consultoria",
+    7: {
+         title: "NMC Consultoria",
         subtitle: "Site institucional para consultoria imobiliária jurídica",
         image: "img/NMC2.png",
         description: "Site institucional desenvolvido para empresa do ramo imobiliário jurídico, com objetivo de apresentar a empresa de forma profissional e facilitar o contato com clientes potenciais.",
@@ -642,10 +663,11 @@ const projectsData = {
             "Otimização para dispositivos móveis",
             "Integração com redes sociais"
         ],
-        technologies: ["HTML5", "CSS3", "JavaScript", "Corporate Website", "Legal Tech"],
+        technologies: ["PHP", "Codeigniter", "Bootstrap"],
+       
         
     },
-    7: {
+    8: {
         title: "Cyphertech Automation",
         subtitle: "App Android para automação industrial única",
         image: "img/Cyphertech2.png",
@@ -658,23 +680,10 @@ const projectsData = {
             "Integração industrial",
             "Controle de processos em tempo real"
         ],
-        technologies: ["Java", "Android Studio", "PHP", "C#", "Microcontrollers", "IoT"],
-        
-    },
-    8: {
-        title: "Amigos CCDS",
-        subtitle: "App mobile para Conselhos Comunitários de Defesa Social",
-        image: "img/Amigos2.png",
-        description: "Aplicativo mobile desenvolvido para aproximar líderes dos Conselhos Comunitários de Defesa Social dos órgãos competentes de segurança pública. Plataforma completa com múltiplas funcionalidades para engajamento comunitário.",
-        features: [
-            "Portal de notícias do CCDS",
-            "Sistema de notificação de eventos",
-            "Documentos relacionados aos CCDS's",
-            "Respostas de formulários de avaliação",
-            "Acesso à identidade funcional digital",
-            "Comunicação direta com órgãos públicos"
-        ],
-        technologies: ["Flutter", "Dart", "Firebase", "Push Notifications", "Community App"],
+        technologies: ["Java", "Kotlin", "PHP", "C#"],
+    
+         
+       
        
     }
 };
