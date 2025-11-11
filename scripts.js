@@ -1,4 +1,4 @@
-// Sistema de Navegação com Animações Divertidas
+
 class FunPageManager {
     constructor() {
         this.currentPage = 'sobre-page';
@@ -275,7 +275,7 @@ class FunPageManager {
     }
 }
 
-// CSS para códigos pulando
+
 const jumpingCodesStyles = `
 .transition-codes {
     position: fixed;
@@ -324,12 +324,12 @@ const jumpingCodesStyles = `
 }
 `;
 
-// Adicionar estilos dos códigos pulando
+
 const jumpingCodesStyleSheet = document.createElement('style');
 jumpingCodesStyleSheet.textContent = jumpingCodesStyles;
 document.head.appendChild(jumpingCodesStyleSheet);
 
-// Gerar códigos computacionais descendo INFINITAMENTE
+
 function createInfiniteCodeRain() {
     const codeBackground = document.getElementById('codeBackground');
     if (!codeBackground) return;
@@ -462,7 +462,7 @@ function createSingleCodeLine(container, snippets, index) {
     container.appendChild(codeLine);
 }
 
-// Filtro de Projetos
+
 function initProjectsFilter() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
@@ -493,7 +493,7 @@ function initProjectsFilter() {
     });
 }
 
-// Smooth scrolling para links internos
+
 function setupSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -509,7 +509,7 @@ function setupSmoothScrolling() {
     });
 }
 
-// Otimizar layout para mobile
+
 function optimizeMobileLayout() {
     if (window.innerWidth < 768) {
         document.querySelectorAll('.page').forEach(page => {
@@ -534,7 +534,7 @@ function optimizeMobileLayout() {
     }
 }
 
-// Inicializar quando DOM carregar
+
 document.addEventListener('DOMContentLoaded', function() {
     new FunPageManager();
     createInfiniteCodeRain();
@@ -544,7 +544,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('resize', optimizeMobileLayout);
 });
-// Dados dos projetos atualizados
+
 const projectsData = {
      1: {
     title: "SGS Saúde - Sistema de Gestão de Saúde",
@@ -688,14 +688,14 @@ const projectsData = {
     }
 };
 
-// Modal de detalhes do projeto
+
 function initProjectModal() {
     const modal = document.getElementById('project-modal');
     const modalBody = modal.querySelector('.modal-body');
     const closeBtn = modal.querySelector('.modal-close');
     const overlay = modal.querySelector('.modal-overlay');
 
-    // Abrir modal
+    
     document.querySelectorAll('.view-details').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -704,7 +704,7 @@ function initProjectModal() {
         });
     });
 
-    // Fechar modal
+   
     function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = 'auto';
@@ -713,7 +713,7 @@ function initProjectModal() {
     closeBtn.addEventListener('click', closeModal);
     overlay.addEventListener('click', closeModal);
 
-    // Fechar com ESC
+    
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             closeModal();
@@ -764,8 +764,8 @@ function initProjectModal() {
     }
 }
 
-// E atualize a inicialização no DOMContentLoaded:
+
 document.addEventListener('DOMContentLoaded', function() {
-    // ... código existente ...
-    initProjectModal(); // ⭐ Adicione esta linha
+    
+    initProjectModal(); 
 });
