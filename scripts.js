@@ -549,7 +549,7 @@ const projectsData = {
      1: {
     title: "SGS Saúde - Sistema de Gestão de Saúde",
     subtitle: "Sistema de gestão para diretoria de saúde da Polícia Militar do Ceará",
-    image: "img/SGS.png",
+    image: "img/SGS2.png",
     description: "O sistema de gestão de saúde da polícia militar do Ceará foi desenvolvido com o objetivo de facilitar o gerenciamento de horários e do atendimento dentro das operações da diretoria de saúde, trazendo otimização no trabalho dos profissionais da saúde dentro da PMCE e facilidade de atendimento para os policiais militares do estado.",
     features: [
         "Gestão completa de agendamentos e horários",

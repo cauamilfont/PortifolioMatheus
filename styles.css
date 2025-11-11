@@ -1645,6 +1645,13 @@ footer {
     .modal-title {
         font-size: 2rem;
     }
+    .modal-image img {
+        height: 300px;
+        object-fit: contain;
+        background-color: var(--card-bg);
+        padding: 10px;
+        border-radius: 10px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1658,6 +1665,13 @@ footer {
     
     .modal-subtitle {
         font-size: 1rem;
+    }
+     .modal-image img {
+        height: 250px;
+        object-fit: contain;
+        background-color: var(--card-bg);
+        padding: 8px;
+        border-radius: 8px;
     }
 }
 
